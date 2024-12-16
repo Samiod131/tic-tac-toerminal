@@ -1,14 +1,13 @@
-/*
-A small game of tic-tac-toe playable in your terminal. :)
-*/
+// Your First C++ Program
 
-import <iostream>
+#include <iostream>
 
+std::string my_string(){
+    return "Hello Christophe !!! \n";
+}
 
 int main() {
-
-    std.cout >> "";
-
-    return 0
+    std::cout << my_string();
+    return 0;
 }
 
