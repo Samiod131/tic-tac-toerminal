@@ -1,4 +1,5 @@
 #include <iostream>
+#include <array>
 
 
 std::string get_ascii_header(){
@@ -24,7 +25,7 @@ void print_text(std::string some_text){
     std::cout << some_text << std::endl;
 }
 
-char get_grid_value(int value){
+char get_grid_value_symbol(int value){
     char symbol = ' ';
     if (value == 1) {
         symbol = 'X';
@@ -37,11 +38,11 @@ char get_grid_value(int value){
 
 }
 
-void print_grid(int grid[3][3]){
+void print_grid(std::array<std::array<int, 3>, 3> grid){
     for (int i = 0; i < 3; i++) {
         std::cout << '|';
         for (int j = 0; j < 3; j++) {
-            std::cout << get_grid_value(grid[i][j]) << "|";
+            std::cout << get_grid_value_symbol(grid[i][j]) << "|";
         }
         std::cout << std::endl;
 
