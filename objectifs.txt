@@ -1,0 +1,4 @@
+# Objectifs du jeu
+
+
+On gère un array 3x3. Il prend 3 valeurs d'integers possible. 0, pour case vide, 1, pour X, 2, pour O. 
