@@ -12,18 +12,18 @@ std::string get_ascii_header(){
   |_|  |_||___|      |_| |__,||___|      |_| |___||___||_|  |_|_|_||_||_|_||__,||_|
                                                                                    )";
     return header;
-}
+};
 
 std::string get_description(){
 
     std::string description = "A small tic tac toe game made for fun.";
     return description;
-}
+};
 
 
 void print_text(std::string some_text){
     std::cout << some_text << std::endl;
-}
+};
 
 char get_grid_value_symbol(int value){
     char symbol = ' ';
@@ -36,7 +36,7 @@ char get_grid_value_symbol(int value){
 
     return symbol;
 
-}
+};
 
 void print_grid(std::array<std::array<int, 3>, 3> grid){
     for (int i = 0; i < 3; i++) {
@@ -47,4 +47,14 @@ void print_grid(std::array<std::array<int, 3>, 3> grid){
         std::cout << std::endl;
 
     }
-}
+};
+
+void print_player_win(int player_id){
+    std::string congrat_text = "Player "+std::to_string(player_id)+" wins! Congratulations! ";
+    print_text(congrat_text);
+};
+
+void print_draw(){
+    std::string draw_text = "The grid is full... yet no one wins!";
+    print_text(draw_text);
+};
