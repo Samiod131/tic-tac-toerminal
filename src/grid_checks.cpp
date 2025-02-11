@@ -46,7 +46,6 @@ bool check_win(std::array<std::array<int, 3>, 3> grid){
     }
 }
 
-
 bool check_full(std::array<std::array<int, 3>, 3> grid){
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {

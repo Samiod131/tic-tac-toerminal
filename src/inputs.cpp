@@ -1,7 +1,8 @@
 #include <iostream>
 #include <array>
 
-#include "printings.hpp"
+#include "../include/printings.hpp"
+
 
 std::string get_user_input(){
     std::string input;

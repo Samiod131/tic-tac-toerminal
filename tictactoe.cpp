@@ -1,8 +1,9 @@
 #include <iostream>
 #include <array>
 
-#include "inputs.hpp"
-#include "grid_checks.hpp"
+#include "include/inputs.hpp"
+#include "include/printings.hpp"
+#include "include/grid_checks.hpp"
 
 
 void run_new_game(){
