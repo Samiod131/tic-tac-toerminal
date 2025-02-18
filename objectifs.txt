@@ -7,4 +7,11 @@ Nice, c'est fait. Comment on pourrait designer le code pour mieux scaler?
 
 Idées:
 -Compartimentaliser en objets (grille, display, input, et joueurs)
+    - Input Bridge
+    - Output Bridge
+    - Grid
+    - HumanPlayer
+    - BotPlayer (difficulty levels)
+    - Game object?
+    
 -Penser à des structures qui scalents pour la grille, avec des méthodes d'inputs et de display différentes.
