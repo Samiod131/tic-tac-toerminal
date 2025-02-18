@@ -1,17 +1,10 @@
-# Objectifs du jeu
 
-
-On gère un array 3x3. Il prend 3 valeurs d'integers possible. 0, pour case vide, 1, pour X, 2, pour O. 
-
-Nice, c'est fait. Comment on pourrait designer le code pour mieux scaler?
-
-Idées:
--Compartimentaliser en objets (grille, display, input, et joueurs)
+Ideas:
+- Objects:
     - Input Bridge
     - Output Bridge
     - Grid
     - HumanPlayer
     - BotPlayer (difficulty levels)
     - Game object?
-    
--Penser à des structures qui scalents pour la grille, avec des méthodes d'inputs et de display différentes.
+- UI?
