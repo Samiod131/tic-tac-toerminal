@@ -7,4 +7,5 @@ Ideas:
     - HumanPlayer
     - BotPlayer (difficulty levels)
     - Game object?
+- references
 - UI?

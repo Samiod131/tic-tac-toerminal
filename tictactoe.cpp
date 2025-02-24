@@ -1,28 +1,31 @@
 #include <iostream>
 #include <array>
+#include <stdexcept>
 
 #include "include/inputs.hpp"
 #include "include/printings.hpp"
-#include "include/grid_checks.hpp"
+#include "include/grid.hpp"
 
 
 void run_new_game(){
     bool game_over = false;
 
-    std::array<std::array<int, 3>, 3> grid = {{{0,0,0}, {0,0,0}, {0,0,0}}};
-    print_grid(grid);
+    Board game_board = Board();
+    print_grid(game_board.get_grid());
 
     int current_player = 1;
+    int winner = 0;
     while (!game_over){
         print_text("Player "+std::to_string(current_player)+"\'s turn:");
-        std::array<int, 2> position = get_position_play(grid);
-        grid[position[0]][position[1]] = current_player;
-        print_grid(grid);
+        std::array<int, 2> position = get_position_play(game_board.get_grid());
+        game_board.set_value(position, current_player);
+        print_grid(game_board.get_grid());
 
-        if (check_win(grid)) {
-            print_player_win(current_player);
+        winner = game_board.check_win();
+        if (winner) {
+            print_player_win(winner);
             game_over=true;
-        } else if (check_full(grid)) {
+        } else if (game_board.check_full()) {
             print_draw();
             game_over=true;
         };
