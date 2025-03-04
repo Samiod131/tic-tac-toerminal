@@ -3,9 +3,12 @@ Ideas:
 - Objects:
     - Input Bridge
     - Output Bridge
-    - Grid
-    - HumanPlayer
-    - BotPlayer (difficulty levels)
-    - Game object?
-- references
-- UI?
+    - Grid (Done)
+    - HumanPlayer (Done)
+    - BotPlayer (difficulty levels) (Basic easy Done)
+    - Game object? (Done)
+- Setup cmake
+- Conform code plus vscode env.
+
+Questions:
+- still, why header files vs cpp. Why not just headers here?
