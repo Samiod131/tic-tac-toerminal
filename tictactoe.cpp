@@ -1,55 +1,47 @@
 #include <iostream>
 #include <array>
+#include <memory>
 #include <stdexcept>
 
 #include "include/inputs.hpp"
 #include "include/printings.hpp"
-#include "include/grid.hpp"
+#include "include/players.hpp"
+#include "include/game_setup.hpp"
 
 
-void run_new_game(){
-    bool game_over = false;
+void run_new_setup(){
 
-    Board game_board = Board();
-    print_grid(game_board.get_grid());
+    std::shared_ptr<Player> player_1;
+    std::shared_ptr<Player> player_2;
 
-    int current_player = 1;
-    int winner = 0;
-    while (!game_over){
-        print_text("Player "+std::to_string(current_player)+"\'s turn:");
-        std::array<int, 2> position = get_position_play(game_board.get_grid());
-        game_board.set_value(position, current_player);
-        print_grid(game_board.get_grid());
+    print_text("Enter your name:");
+    std::string human_name = get_user_input();
+    player_1 = std::make_shared<HumanPlayer>(1, human_name);
 
-        winner = game_board.check_win();
-        if (winner) {
-            print_player_win(winner);
-            game_over=true;
-        } else if (game_board.check_full()) {
-            print_draw();
-            game_over=true;
-        };
+    print_text("Will you play against a friend? (y/n)");
+    if (get_yorn_input()){
+        print_text("Enter second player's name:");
+        std::string human_name = get_user_input();
+        player_2 = std::make_shared<HumanPlayer>(2, human_name);
+    } else {
+        player_2 = std::make_shared<EasyBotPlayer>(2, "Dumb Bot");
+    }
 
-        if (current_player==1) {
-            current_player=2;
-        } else if (current_player==2) {
-            current_player=1;
-        };
-    };
+    GameSetup new_setup = GameSetup(player_1, player_2);
+    new_setup.run();
+    
 }
 
 int main() {
-    print_text(get_ascii_header());
-    print_text(get_description());
+    reset_terminal();
 
     bool continue_program = true;
     while (continue_program) {
-        run_new_game();
+        run_new_setup();
         continue_program = get_continue();
-
     }
+    clear_terminal();
     
-
     return 0;
 }
 

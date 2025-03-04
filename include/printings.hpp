@@ -14,6 +14,10 @@ char get_grid_value_symbol(int value);
 
 void print_grid(std::array<std::array<int, 3>, 3> grid);
 
-void print_player_win(int player_id);
+void print_player_win(std::string player_name);
 
 void print_draw();
+
+void clear_terminal();
+
+void reset_terminal();

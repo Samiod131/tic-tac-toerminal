@@ -11,10 +11,8 @@ std::string get_user_input(){
     return input;
 }
 
-bool get_continue(){
+bool get_yorn_input(){
     std::string input;
-    
-    print_text("Do you want to start a new game ? [y/n]");
     input = get_user_input();
     if (input=="y" || input =="Y"){
         return true;
@@ -22,8 +20,19 @@ bool get_continue(){
         return false;
     } else {
         print_text("Invalid input, must be \"y\" or \"n\" !");
-        return get_continue();
+        return get_yorn_input();
     };
+}
+
+bool get_rematch(){
+    print_text("Do you want a rematch ? [y/n]");
+    return get_yorn_input();
+}
+
+bool get_continue(){
+    reset_terminal();
+    print_text("Do you want to start a new game ? [y/n]");
+    return get_yorn_input();
 }
 
 std::array<int, 2> get_position_play(std::array<std::array<int, 3>, 3> grid){
