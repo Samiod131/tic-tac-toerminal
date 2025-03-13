@@ -1,0 +1,3 @@
+/mnt/c/Users/sami-/Desktop/code_repos/tic-tac-toerminal/build/CMakeFiles/TicTacToerminal.dir
+/mnt/c/Users/sami-/Desktop/code_repos/tic-tac-toerminal/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/sami-/Desktop/code_repos/tic-tac-toerminal/build/CMakeFiles/rebuild_cache.dir

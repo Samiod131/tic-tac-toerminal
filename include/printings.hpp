@@ -1,8 +1,7 @@
 #pragma once
 
-#include <iostream>
 #include <array>
-
+#include <iostream>
 
 std::string get_ascii_header(void);
 
