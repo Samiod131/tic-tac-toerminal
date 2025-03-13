@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/TicTacToerminal.dir/src/board.cpp.o CMakeFiles/TicTacToerminal.dir/src/game_setup.cpp.o CMakeFiles/TicTacToerminal.dir/src/inputs.cpp.o CMakeFiles/TicTacToerminal.dir/src/players.cpp.o CMakeFiles/TicTacToerminal.dir/src/printings.cpp.o CMakeFiles/TicTacToerminal.dir/src/tictactoe.cpp.o -o TicTacToerminal 
