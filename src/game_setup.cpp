@@ -5,9 +5,8 @@
 #include <memory>
 
 #include "../include/board.hpp"
-#include "../include/inputs.hpp"
 #include "../include/players.hpp"
-#include "../include/printings.hpp"
+#include "../include/presenters.hpp"
 
 GameSetup::GameSetup(std::shared_ptr<Player>& player_1, std::shared_ptr<Player>& player_2) {
     players[0] = player_1;
@@ -18,7 +17,7 @@ GameSetup::GameSetup(std::shared_ptr<Player>& player_1, std::shared_ptr<Player>&
 void GameSetup::run() {
     reset_game();
     play_new_game();
-    while (get_rematch()) {
+    while (presenter->get_rematch()) {
         set_rematch();
         play_new_game();
     }
@@ -42,18 +41,18 @@ void GameSetup::set_rematch() {
 void GameSetup::play_new_game() {
     reset_game();
     while (!game_over) {
-        reset_terminal();
-        print_grid(game_board.get_grid());
-        print_text(players[player_id - 1]->get_name() + "\'s turn:");
+        presenter->reset_terminal();
+        presenter->print_grid(game_board.get_grid());
+        presenter->print_text(players[player_id - 1]->get_name() + "\'s turn:");
         game_board.set_value(players[player_id - 1]->play_move(game_board.get_grid()),
                              players[player_id - 1]->get_id());
 
         winner = game_board.check_win();
         if (winner) {
-            print_player_win(players[winner - 1]->get_name());
+            presenter->print_player_win(players[winner - 1]->get_name());
             game_over = true;
         } else if (game_board.check_full()) {
-            print_draw();
+            presenter->print_draw();
             game_over = true;
         };
 

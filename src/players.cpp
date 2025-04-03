@@ -21,7 +21,7 @@ HumanPlayer::HumanPlayer(int player_id, std::string player_name) : Player(player
 };
 std::string HumanPlayer::get_default_name() { return "Player_" + std::to_string(get_id()); };
 std::array<int, 2> HumanPlayer::play_move(std::array<std::array<int, 3>, 3> grid) {
-    return get_position_play(grid);
+    return presenter->get_position_play(grid);
 };
 
 EasyBotPlayer::EasyBotPlayer(int player_id, std::string player_name)

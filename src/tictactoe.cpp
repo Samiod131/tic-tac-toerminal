@@ -3,10 +3,15 @@
 #include <memory>
 #include <stdexcept>
 
-#include "../include/inputs.hpp"
-#include "../include/printings.hpp"
+#include "../include/presenters.hpp"
 #include "../include/players.hpp"
 #include "../include/game_setup.hpp"
+
+
+//Declaring presenter singleton manager global values
+PresenterBase* PresenterManager::instance = nullptr;
+std::mutex PresenterManager::instanceMutex;
+
 
 void run_new_setup()
 {
@@ -14,15 +19,15 @@ void run_new_setup()
     std::shared_ptr<Player> player_1;
     std::shared_ptr<Player> player_2;
 
-    print_text("Enter your name:");
-    std::string human_name = get_user_input();
+    PresenterBase* presenter = PresenterManager::get_instance();
+
+    std::string human_name = presenter->get_text_input("Enter your name:");
     player_1 = std::make_shared<HumanPlayer>(1, human_name);
 
-    print_text("Will you play against a friend? (y/n)");
-    if (get_yorn_input())
+
+    if (presenter->get_yorn_input("Will you play against a friend? (y/n)"))
     {
-        print_text("Enter second player's name:");
-        std::string human_name = get_user_input();
+        std::string human_name = presenter->get_text_input("Enter second player's name:");
         player_2 = std::make_shared<HumanPlayer>(2, human_name);
     }
     else
@@ -36,12 +41,45 @@ void run_new_setup()
 
 int main()
 {
-    reset_terminal();
-    while (get_continue())
-    {
+    PresenterManager::initialize<TerminalPresenter>();
+    PresenterBase* presenter = PresenterManager::get_instance();
+    
+    do {
         run_new_setup();
-    }
-    clear_terminal();
-
+    } while (presenter->get_continue());
+    
+    PresenterManager::destroy();
     return 0;
 }
+
+
+
+// #include <QApplication>
+// #include <QWidget>
+// #include <QLabel>
+// #include <QVBoxLayout>
+
+
+
+// int main(int argc, char *argv[]) {
+//     QApplication app(argc, argv);
+    
+//     // Create the main window
+//     QWidget window;
+//     window.setWindowTitle("Qt Test Window");
+//     window.resize(300, 200);
+    
+//     // Create a label with some text
+//     QLabel label("Qt is working correctly!");
+    
+//     // Create a layout and add the label
+//     QVBoxLayout *layout = new QVBoxLayout(&window);
+//     layout->addWidget(&label);
+//     layout->setAlignment(Qt::AlignCenter);
+    
+//     // Show the window
+//     window.show();
+    
+//     // Start the event loop
+//     return app.exec();
+// }

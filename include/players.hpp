@@ -5,12 +5,15 @@
 #include <random>
 #include <vector>
 
-#include "../include/inputs.hpp"
+#include "../include/presenters.hpp"
 
 class Player {
-   private:
-    std::string name;
-    int id;
+    private:
+        std::string name;
+        int id;
+    protected:
+        PresenterBase* presenter = PresenterManager::get_instance();
+
 
    public:
     Player(int player_id, std::string player_name);

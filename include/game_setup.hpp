@@ -6,11 +6,14 @@
 
 #include "../include/board.hpp"
 #include "../include/players.hpp"
+#include "../include/presenters.hpp"
+
 
 class GameSetup {
    private:
     Board game_board = Board();
     std::shared_ptr<Player> players[2];
+    PresenterBase* presenter = PresenterManager::get_instance();
     int player_id;
     int starting_player_id;
     int winner;
